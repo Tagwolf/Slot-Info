@@ -1,134 +1,57 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Slot Reservierung - Redstone Casino</title>
-<style>
-  body {
-    background-color: #1c1e22;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 30px;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  form {
-    max-width: 500px;
-    margin: auto;
-    background-color: #2c2f33;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  input, textarea {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #23272a;
-    color: white;
-    font-size: 16px;
-  }
-  button {
-    padding: 12px;
-    background-color: #7289da;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #99aab5;
-  }
-  .message {
-    max-width: 500px;
-    margin: 15px auto 0 auto;
-    text-align: center;
-    font-weight: bold;
-  }
-  .success {
-    color: #43b581;
-  }
-  .error {
-    color: #f04747;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slot Reservieren - Redstone Casino</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<h1>🎰 Slot reservieren - Redstone Casino</h1>
-
-<form id="reservierungsForm">
-  <input type="text" name="name" placeholder="Dein Minecraft-Name" required />
-  <input type="text" name="slot" placeholder="Slot-Wunsch (z.B. Slot A)" required />
-  <textarea name="nachricht" placeholder="Zusätzliche Infos oder Wünsche..." rows="4"></textarea>
-  <button type="submit">Reservieren</button>
-</form>
-
-<div id="message" class="message"></div>
-
-<script>
-  const webhookURL = "https://discord.com/api/webhooks/1386062927701868574/hpQSejrPUGLUGmDjTRiOsbjY7dvQIc7d51_TDWkhvmoCBbkiGLDkRmUzeIMBgglx9qXy";
-
-  document.getElementById('reservierungsForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const name = this.name.value.trim();
-    const slot = this.slot.value.trim();
-    const nachricht = this.nachricht.value.trim() || "Keine Angaben";
-    const messageBox = document.getElementById('message');
-    messageBox.textContent = "";
-    messageBox.className = "message";
-
-    if (!name || !slot) {
-      messageBox.textContent = "Bitte Name und Slot ausfüllen!";
-      messageBox.classList.add("error");
-      return;
-    }
-
-    // Discord Embed Payload
-    const payload = {
-      content: "@here Neue Slot Reservierung!",
-      embeds: [{
-        title: "🎰 Neue Slot Reservierung",
-        color: 0x7289da,
-        fields: [
-          { name: "Minecraft Name", value: name, inline: true },
-          { name: "Slot", value: slot, inline: true },
-          { name: "Nachricht", value: nachricht, inline: false }
-        ],
-        footer: { text: "Redstone Casino" },
-        timestamp: new Date().toISOString()
-      }]
-    };
-
-    try {
-      const res = await fetch(webhookURL, {
+  <header>
+    <h1>📩 Slot Reservieren</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="slotverkauf.html">Slotverkauf</a>
+      <a href="reservierung.html">Slot Reservieren</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </header>
+  <section>
+    <h2>Reservierungsformular</h2>
+    <form id="slotForm">
+      <label>Dein Minecraft Name:<br><input type="text" name="name" required></label><br><br>
+      <label>Slot Name:<br><input type="text" name="slot" required></label><br><br>
+      <label>Nachricht:<br><textarea name="msg" required></textarea></label><br><br>
+      <button type="submit">Reservieren</button>
+    </form>
+  </section>
+  <script>
+    document.getElementById("slotForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      fetch("https://discord.com/api/webhooks/1386062927701868574/hpQSejrPUGLUGmDjTRiOsbjY7dvQIc7d51_TDWkhvmoCBbkiGLDkRmUzeIMBgglx9qXy", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          embeds: [
+            {
+              title: "🎰 Neue Slot-Reservierung",
+              color: 5814783,
+              fields: [
+                { name: "👤 Name", value: data.get("name"), inline: true },
+                { name: "🎮 Slot", value: data.get("slot"), inline: true },
+                { name: "📝 Nachricht", value: data.get("msg") }
+              ],
+              footer: { text: "Redstone Casino" }
+            }
+          ]
+        })
       });
-
-      if (res.ok) {
-        messageBox.textContent = "✅ Reservierung erfolgreich gesendet!";
-        messageBox.classList.add("success");
-        this.reset();
-      } else {
-        messageBox.textContent = "❌ Fehler beim Senden der Reservierung!";
-        messageBox.classList.add("error");
-      }
-    } catch (error) {
-      console.error(error);
-      messageBox.textContent = "❌ Netzwerkfehler!";
-      messageBox.classList.add("error");
-    }
-  });
-</script>
-
+      alert("Reservierung abgeschickt!");
+      this.reset();
+    });
+  </script>
 </body>
 </html>
