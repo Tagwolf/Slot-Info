@@ -1,0 +1,56 @@
+/* Gemeinsames Styling */
+body {
+  background-color: #1c1e22;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #2c2f33;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #7289da;
+  font-weight: bold;
+}
+section {
+  padding: 40px 30px;
+  max-width: 900px;
+  margin: auto;
+}
+h2 {
+  border-bottom: 2px solid #7289da;
+  padding-bottom: 5px;
+}
+table {
+  width: 100%;
+  background-color: #2c2f33;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+button {
+  padding: 10px 20px;
+  background: #7289da;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  background: #2c2f33;
+  border: 1px solid #444;
+  color: white;
+  margin-bottom: 10px;
+}
