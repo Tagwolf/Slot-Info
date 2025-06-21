@@ -1,119 +1,82 @@
+<!-- slotverkauf.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Redstone Casino - Slotverkauf</title>
-<style>
-  body {
-    background-color: #1c1e22;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
-  }
-  header {
-    background-color: #2c2f33;
-    padding: 20px;
-    text-align: center;
-  }
-  nav {
-    background-color: #23272a;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0;
-  }
-  nav a {
-    color: #7289da;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  nav a:hover {
-    color: #99aab5;
-  }
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-  footer {
-    background-color: #2c2f33;
-    color: #99aab5;
-    text-align: center;
-    padding: 10px;
-    margin-top: 40px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  th, td {
-    border: 1px solid #444c56;
-    padding: 12px 15px;
-    text-align: center;
-  }
-  th {
-    background-color: #2c2f33;
-  }
-  tr:hover {
-    background-color: #3a3f48;
-  }
-  .price {
-    color: #43b581;
-    font-weight: bold;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slotverkauf - Redstone Casino</title>
+  <style>
+    body {
+      background-color: #1c1e22;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2c2f33;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #7289da;
+      font-weight: bold;
+    }
+    section {
+      padding: 40px 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #7289da;
+      padding-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      background-color: #2c2f33;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <h1>🎰 Redstone Casino - Slotverkauf</h1>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="slotverkauf.html">Slotverkauf</a>
-  <a href="reservierung.html">Slot Reservieren</a>
-  <a href="support.html">Support</a>
-</nav>
-
-<main>
-  <h2>Unsere Slot-Angebote</h2>
-  <p>Hier kannst du Slots für das Redstone Casino kaufen. Preise in $.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Slot</th>
-        <th>Beschreibung</th>
-        <th>Preis</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Slot Mystery V1</td>
-        <td>Perfekter Slot mit Extra-Redstone Effekten</td>
-        <td class="price">$500k/td>
-      </tr>
-      <tr>
-        <td>Slot Ohio </td>
-        <td>Großer Slot mit mehr Gewinnchancen</td>
-        <td class="price">$200k</td>
-      </tr>
-      <tr>
-        <td>Slot Bumsbude</td>
-        <td>VIP Slot mit exklusivem Design</td>
-        <td class="price">$500k</td>
-      </tr>
-    </tbody>
-  </table>
-</main>
-
-<footer>
-  &copy; 2025 Redstone Casino | Made with ❤️
-</footer>
-
+  <header>
+    <h1>🎰 Slotverkauf</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="slotverkauf.html">Slotverkauf</a>
+      <a href="reservierung.html">Slot Reservieren</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </header>
+  <section>
+    <h2>🎲 Verfügbare Slots & Preise ($)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Slot-Name</th>
+          <th>Preis ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Mini Into</td><td>1.8</td></tr>
+        <tr><td>Amulett v1</td><td>3</td></tr>
+        <tr><td>Jump in</td><td>3.5</td></tr>
+        <tr><td>Tortilla</td><td>3.5</td></tr>
+        <tr><td>Mega</td><td>10</td></tr>
+        <tr><td>Botgame</td><td>5</td></tr>
+        <tr><td>ZikZak Mystery</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </section>
 </body>
 </html>
+
